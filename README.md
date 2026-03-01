@@ -34,13 +34,18 @@ This project implements a complete, end-to-end Machine Learning pipeline to pred
 ## ⚙️ Setup & Installation
 
 1. Ensure you have Python installed.
-2. Install the required dependencies:
-```bash
-pip install -r requirements.txt
+2. create a virtual enviroment and activate and install requirments with:
+    ```bash
+    python -m venv ex00
+    source ex00/bin/activate
+    pip install -r requirements.txt
+    ```
+    
+    or on mac system:
 
-```
-
-
+    ```bash
+    bash manage_env.sh
+    ```
 
 ## 🚀 How to Run the Pipeline
 

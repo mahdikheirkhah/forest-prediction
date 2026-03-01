@@ -36,33 +36,50 @@ def load_and_split_data(filepath: str, test_size: float = 0.25) -> Tuple[pd.Data
         raise
 
 def get_model_pipelines() -> Dict[str, Dict[str, Any]]:
+    """
+    Defines model pipelines and hyperparameter grids tuned to balance 
+    high validation accuracy with the < 0.98 training accuracy audit constraint.
+    """
     pipelines_and_grids = {
         'LogisticRegression': {
-            'model': Pipeline([('scaler', StandardScaler()), ('clf', LogisticRegression(solver='saga', max_iter=500, random_state=42))]),
-            'params': {'clf__C': [0.1, 1.0]}
+            'model': Pipeline([('scaler', StandardScaler()), 
+                               ('clf', LogisticRegression(solver='saga', max_iter=500, random_state=42))]),
+            'params': {
+                'clf__C': [0.01, 0.1, 1.0],  # Regularization strength
+                'clf__penalty': ['l2']       # Type of penalty
+            }
         },
         'KNN': {
-            'model': Pipeline([('scaler', StandardScaler()), ('clf', KNeighborsClassifier())]),
-            'params': {'clf__n_neighbors': [15, 21], 'clf__weights': ['uniform']}
+            'model': Pipeline([('scaler', StandardScaler()), 
+                               ('clf', KNeighborsClassifier())]),
+            'params': {
+                'clf__n_neighbors': [21, 31, 51], # Number of neighbors
+                'clf__weights': ['uniform']       # Weighting function
+            }
         },
         'RandomForest': {
             'model': Pipeline([('clf', RandomForestClassifier(n_jobs=-1, random_state=42))]),
             'params': {
-                'clf__n_estimators': [100],
-                'clf__max_depth': [25, 35], 
-                'clf__min_samples_leaf': [2, 5] 
+                'clf__n_estimators': [100, 200],  # Number of trees
+                'clf__max_depth': [15, 20],       # Depth limit (to prevent overfitting)
+                'clf__min_samples_leaf': [20, 50] # Min samples per leaf (forces generalization)
             }
         },
         'GradientBoosting': {
             'model': Pipeline([('clf', GradientBoostingClassifier(random_state=42))]),
             'params': {
-                'clf__n_estimators': [50], 
-                'clf__max_depth': [5] 
+                'clf__n_estimators': [100],       # Number of boosting stages
+                'clf__learning_rate': [0.05, 0.1], # Shrinkage of each tree's contribution
+                'clf__max_depth': [3, 5]          # Depth of individual trees
             }
         },
         'SVM': {
-            'model': Pipeline([('scaler', StandardScaler()), ('clf', SVC(random_state=42))]),
-            'params': {'clf__C': [1.0]}
+            'model': Pipeline([('scaler', StandardScaler()), 
+                               ('clf', SVC(random_state=42))]),
+            'params': {
+                'clf__C': [0.1, 1.0],             # Margin hardness
+                'clf__kernel': ['rbf']            # Transformation type
+            }
         }
     }
     return pipelines_and_grids
