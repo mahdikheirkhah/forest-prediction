@@ -1,0 +1,109 @@
+(ex00) PS C:\Users\mahdi\Desktop\forest-prediction\scripts> python .\model_selection.py
+2026-03-01 22:52:02 - INFO - --- STARTING MODEL SELECTION PIPELINE ---
+2026-03-01 22:52:02 - INFO - Initiating data load and split for ../data/train.csv...
+2026-03-01 22:52:02 - INFO - Loading raw data from: ../data/train.csv
+2026-03-01 22:52:02 - INFO - Applying feature engineering...
+2026-03-01 22:52:02 - INFO - Successfully split data into features (X) and target (y). Shape: X=(50120, 56)
+2026-03-01 22:52:02 - INFO - Data split successful. Training size: 37590, Validation size: 12530
+2026-03-01 22:52:02 - INFO - Starting Grid Search for LogisticRegression...
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+C:\Users\mahdi\Desktop\forest-prediction\ex00\Lib\site-packages\sklearn\linear_model\_sag.py:348: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  warnings.warn(
+2026-03-01 22:55:17 - INFO - [LogisticRegression] Best Parameters: {'clf__C': 1.0}
+2026-03-01 22:55:17 - INFO - [LogisticRegression] Best CV Accuracy: 0.8052
+2026-03-01 22:55:17 - INFO - Starting Grid Search for KNN...
+2026-03-01 22:55:22 - INFO - [KNN] Best Parameters: {'clf__n_neighbors': 21, 'clf__weights': 'uniform'}
+2026-03-01 22:55:22 - INFO - [KNN] Best CV Accuracy: 0.8607
+2026-03-01 22:55:22 - INFO - Starting Grid Search for RandomForest...
+2026-03-01 22:56:02 - INFO - [RandomForest] Best Parameters: {'clf__max_depth': 20, 'clf__min_samples_leaf': 20, 'clf__n_estimators': 200}
+2026-03-01 22:56:02 - INFO - [RandomForest] Best CV Accuracy: 0.8801
+2026-03-01 22:56:02 - INFO - Starting Grid Search for GradientBoosting...
+2026-03-01 23:00:54 - INFO - [GradientBoosting] Best Parameters: {'clf__learning_rate': 0.1, 'clf__max_depth': 5, 'clf__min_samples_leaf': 20, 'clf__n_estimators': 100}
+2026-03-01 23:00:54 - INFO - [GradientBoosting] Best CV Accuracy: 0.9212
+2026-03-01 23:00:54 - INFO - Starting Grid Search for SVM...
+2026-03-01 23:03:40 - INFO - [SVM] Best Parameters: {'clf__C': 1.0, 'clf__kernel': 'rbf'}
+2026-03-01 23:03:40 - INFO - [SVM] Best CV Accuracy: 0.8384
+2026-03-01 23:03:40 - INFO - === GRID SEARCH COMPLETE ===
+2026-03-01 23:03:40 - INFO - Best Model Found: GradientBoosting with Accuracy: 0.9212
+2026-03-01 23:03:40 - INFO - --- MODEL EVALUATION ---
+2026-03-01 23:03:40 - INFO - TRAINING ACCURACY: 0.9595
+2026-03-01 23:03:40 - INFO - ✅ Train accuracy is < 0.98 (No massive overfitting).
+2026-03-01 23:03:41 - INFO - VALIDATION 'Test (1)' ACCURACY: 0.9279
+2026-03-01 23:03:41 - INFO - Successfully saved best model to ../results/best_model.pkl (Overwrites if existed)
+
+
+
+
+(ex00) PS C:\Users\mahdi\Desktop\forest-prediction\scripts> python .\predict.py
+2026-03-01 23:13:36 - INFO - --- STARTING PREDICTION PIPELINE ---
+2026-03-01 23:13:36 - INFO - Model successfully loaded from ../results/best_model.pkl
+2026-03-01 23:13:36 - INFO - Loading blind test data...
+2026-03-01 23:13:36 - INFO - Loading raw data from: ../data/test.csv
+2026-03-01 23:13:37 - INFO - Applying feature engineering...
+2026-03-01 23:13:37 - INFO - Successfully split data into features (X) and target (y). Shape: X=(530892, 56)
+2026-03-01 23:13:37 - INFO - Making predictions on the test set...
+2026-03-01 23:13:44 - INFO - ======================================
+2026-03-01 23:13:44 - INFO - FINAL TEST ACCURACY: 0.6731
+2026-03-01 23:13:44 - INFO - ======================================
+2026-03-01 23:13:44 - INFO - ✅ Test accuracy is > 0.65!
+2026-03-01 23:13:45 - INFO - Predictions saved successfully to ../results/test_predictions.csv (Overwrites if existed)
+2026-03-01 23:13:45 - INFO - 
+--- CONFUSION MATRIX ---
+        Pred_1  Pred_2  Pred_3  Pred_4  Pred_5  Pred_6  Pred_7
+True_1  146764   32303     502       0    4713     665   16737
+True_2   61980  146356    7084      43   27527    9708    1695
+True_3       0     137   27488    1376     429    4164       0
+True_4       0       0      13     568       0       6       0
+True_5      26     351     131       0    6460     109       0
+True_6       0     159    1998     371     161   12518       0
+True_7    1117      11       1       0      32       0   17189
+2026-03-01 23:13:45 - INFO - Confusion matrix heatmap saved to ../results/confusion_matrix_heatmap.png
+2026-03-01 23:13:45 - INFO - Loading training data to plot the learning curve...
+2026-03-01 23:13:45 - INFO - Loading raw data from: ../data/train.csv
+2026-03-01 23:13:45 - INFO - Applying feature engineering...
+2026-03-01 23:13:45 - INFO - Successfully split data into features (X) and target (y). Shape: X=(50120, 56)
+2026-03-01 23:13:45 - INFO - Generating Learning Curve (This may take a few minutes)...
+2026-03-01 23:15:08 - INFO - Learning curve saved to ../results/learning_curve_best_model.png
+2026-03-01 23:15:08 - INFO - ALL PHASES COMPLETE! Check your 'results/' folder.
+(ex00) PS C:\Users\mahdi\Desktop\forest-prediction\scripts> 

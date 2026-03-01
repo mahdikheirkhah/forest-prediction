@@ -11,7 +11,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
-
+from sklearn.impute import SimpleImputer
 from preprocessing_feature_engineering import get_preprocessed_data
 
 # Configure professional logging
@@ -42,15 +42,17 @@ def get_model_pipelines() -> Dict[str, Dict[str, Any]]:
     """
     pipelines_and_grids = {
         'LogisticRegression': {
-            'model': Pipeline([('scaler', StandardScaler()), 
-                               ('clf', LogisticRegression(solver='saga', max_iter=500, random_state=42))]),
+            'model': Pipeline([('imputer', SimpleImputer(strategy='median')),
+                               ('scaler', StandardScaler()), 
+                               ('clf', LogisticRegression(solver='saga', max_iter=1000, random_state=42))]),
             'params': {
-                'clf__C': [0.01, 0.1, 1.0],  # Regularization strength
-                'clf__penalty': ['l2']       # Type of penalty
+                'clf__C': [0.01, 0.1, 0.2, 0.3, 0.5, 1.0],  # Regularization strength
+                # 'clf__penalty': ['l2']       # Type of penalty
             }
         },
         'KNN': {
-            'model': Pipeline([('scaler', StandardScaler()), 
+            'model': Pipeline([('imputer', SimpleImputer(strategy='median')),
+                               ('scaler', StandardScaler()), 
                                ('clf', KNeighborsClassifier())]),
             'params': {
                 'clf__n_neighbors': [21, 31, 51], # Number of neighbors
@@ -58,26 +60,32 @@ def get_model_pipelines() -> Dict[str, Dict[str, Any]]:
             }
         },
         'RandomForest': {
-            'model': Pipeline([('clf', RandomForestClassifier(n_jobs=-1, random_state=42))]),
+            'model': Pipeline([('imputer', SimpleImputer(strategy='median')),
+                               ('scaler', StandardScaler()), 
+                               ('clf', RandomForestClassifier(n_jobs=-1, random_state=42))]),
             'params': {
-                'clf__n_estimators': [100, 200],  # Number of trees
-                'clf__max_depth': [15, 20],       # Depth limit (to prevent overfitting)
+                'clf__n_estimators': [50, 80, 100, 200],  # Number of trees
+                'clf__max_depth': [5, 10, 15, 20],       # Depth limit (to prevent overfitting)
                 'clf__min_samples_leaf': [20, 50] # Min samples per leaf (forces generalization)
             }
         },
         'GradientBoosting': {
-            'model': Pipeline([('clf', GradientBoostingClassifier(random_state=42))]),
+            'model': Pipeline([('imputer', SimpleImputer(strategy='median')),
+                               ('scaler', StandardScaler()), 
+                               ('clf', GradientBoostingClassifier(random_state=42))]),
             'params': {
-                'clf__n_estimators': [100],       # Number of boosting stages
-                'clf__learning_rate': [0.05, 0.1], # Shrinkage of each tree's contribution
-                'clf__max_depth': [3, 5]          # Depth of individual trees
+                'clf__n_estimators': [50, 100],  
+                'clf__learning_rate': [0.05, 0.1],    # Lowered to prevent fast memorization
+                'clf__max_depth': [3, 5],             # Removed 8. Trees must be shallow!
+                'clf__min_samples_leaf': [20, 50]    # Added the same safety net as Random Forest
             }
         },
         'SVM': {
-            'model': Pipeline([('scaler', StandardScaler()), 
+            'model': Pipeline([('imputer', SimpleImputer(strategy='median')),
+                               ('scaler', StandardScaler()), 
                                ('clf', SVC(random_state=42))]),
             'params': {
-                'clf__C': [0.1, 1.0],             # Margin hardness
+                'clf__C': [0.01, 0.1, 0.15, 0.2, 0.3, 0.5, 1.0],             # Margin hardness
                 'clf__kernel': ['rbf']            # Transformation type
             }
         }

@@ -35,9 +35,9 @@ def evaluate_and_save_predictions(y_true: pd.Series, y_pred: np.ndarray, output_
     logging.info("======================================")
     
     if accuracy > 0.65:
-        logging.info("✅ Audit Requirement Met: Test accuracy is > 0.65!")
+        logging.info("✅ Test accuracy is > 0.65!")
     else:
-        logging.warning("❌ Audit Requirement Failed: Test accuracy is <= 0.65.")
+        logging.warning("❌ Test accuracy is <= 0.65.")
 
     os.makedirs(os.path.dirname(output_csv_path), exist_ok=True)
     predictions_df = pd.DataFrame({'True_Cover_Type': y_true, 'Predicted_Cover_Type': y_pred})
@@ -110,10 +110,10 @@ def main() -> None:
         logging.info("Loading training data to plot the learning curve...")
         X_train, y_train = get_preprocessed_data('../data/train.csv')
         
-        _, X_train_sample, _, y_train_sample = \
-            pd.model_selection.train_test_split(X_train, y_train, test_size=10000, stratify=y_train, random_state=42)
+        # _, X_train_sample, _, y_train_sample = \
+        #     pd.model_selection.train_test_split(X_train, y_train, test_size=25000, stratify=y_train, random_state=42)
             
-        plot_and_save_learning_curve(model, X_train_sample, y_train_sample, '../results/learning_curve_best_model.png')
+        plot_and_save_learning_curve(model, X_train, y_train, '../results/learning_curve_best_model.png')
         
         logging.info("ALL PHASES COMPLETE! Check your 'results/' folder.")
         
