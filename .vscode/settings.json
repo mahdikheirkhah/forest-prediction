@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "/Users/mohammad.kheirkhah/Desktop/forest-prediction/ex00/bin/python",
+    "jupyter.jupyterServerType": "local",
+    "jupyter.notebookEditor.defaultKernel": ".jupyter/kernels/ex00",
+    "python.terminal.activateEnvInSelectedTerminal": true,
+    "jupyter.jupyterServerEndpoint": "http://localhost:8891/?token=7023b1ae1ff43329f727ef4f62a5232aa052db37b0697811"
+}
